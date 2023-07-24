@@ -1,18 +1,22 @@
-document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
 
-function ctrlShiftKey(e, keyCode) {
-  return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-}
-
-document.onkeydown = (e) => {
-  // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-  console.log(e);
+// Block opening of inspect element on Windows
+document.addEventListener("keydown", function (event) {
+  // Check for F12 key or Ctrl+Shift+I (Inspect Element shortcut)
   if (
-    event.keyCode === 123 ||
-    ctrlShiftKey(e, "I") ||
-    ctrlShiftKey(e, "J") ||
-    ctrlShiftKey(e, "C") ||
-    (e.ctrlKey && e.keyCode === "U".charCodeAt(0))
-  )
-    return false;
-};
+    event.key === "F12" ||
+    (event.ctrlKey && event.shiftKey && event.key === "I")
+  ) {
+    event.preventDefault();
+  }
+});
+
+// Block opening of inspect element on Mac
+document.addEventListener("keydown", function (event) {
+  // Check for Cmd+Option+I (Inspect Element shortcut)
+  if (event.metaKey && event.altKey && event.key === "I") {
+    event.preventDefault();
+  }
+});
