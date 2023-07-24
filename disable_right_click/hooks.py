@@ -9,7 +9,8 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
-
+app_include_js = "/assets/disable_right_click/js/disable_right_click.js"
+web_include_js = "/assets/disable_right_click/js/disable_right_click.js"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/disable_right_click/css/disable_right_click.css"
 # app_include_js = "/assets/disable_right_click/js/disable_right_click.js"
